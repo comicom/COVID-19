@@ -1,0 +1,224 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "folium_Quickstart.pynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyOcpMbOzAyhzQq0rI0vbCTi",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/comicom/COVID-19/blob/master/test/folium/folium_Quickstart.pynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZtSbkZjhtE53",
+        "colab_type": "text"
+      },
+      "source": [
+        "# Concept\n",
+        "\n",
+        "[Folium](https://python-visualization.github.io/folium/index.html)\n",
+        "\n",
+        "folium **makes it easy to visualize data** that’s been manipulated in Python on an interactive leaflet map. It enables both the binding of data to a map for choropleth visualizations as well as passing rich vector/raster/HTML visualizations as markers on the map.\n",
+        "\n",
+        "The library has a number of built-in tilesets from **OpenStreetMap, Mapbox, and Stamen**, and supports **custom tilesets** with Mapbox or Cloudmade API keys. folium supports both *`Image, Video, GeoJSON and TopoJSON overlays`*."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "S9qqivFfuMhH",
+        "colab_type": "text"
+      },
+      "source": [
+        "# Contents"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "PKnK_kiVt_CC",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Installing\n",
+        "\n",
+        "### requirement\n",
+        "`branca, jinja2 and requests.`\n",
+        "\n",
+        "Some functionalities may require extra dependencies numpy, pandas, geopandas, altair, etc.\n",
+        "\n",
+        "### Installation\n",
+        "`$ pip install folium`\n",
+        "\n",
+        "`$ conda install folium -c conda-forge`"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TQZEpI8Euvo0",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Quickstart\n",
+        "\n",
+        "### Getting Started"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Gt2wkOLFt9lY",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 808
+        },
+        "outputId": "a24d8c13-8a2e-4e9d-d2ae-441247060a32"
+      },
+      "source": [
+        "import folium\n",
+        "\n",
+        "m = folium.Map(location=[36, 128],            # [latitude, longitude]\n",
+        "               width='75%', height='75%',     # set size\n",
+        "               zoom_start=8)                  # set zoom\n",
+        "m"
+      ],
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div style=\"width:100%;\"><div style=\"position:relative;width:100%;height:0;padding-bottom:60%;\"><iframe src=\"about:blank\" style=\"position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;\" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVM9ZmFsc2U7IExfTk9fVE9VQ0g9ZmFsc2U7IExfRElTQUJMRV8zRD1mYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS40LjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGUuanF1ZXJ5LmNvbS9qcXVlcnktMS4xMi40Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS40LjAvZGlzdC9sZWFmbGV0LmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC10aGVtZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9yYXdjZG4uZ2l0aGFjay5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIi8+CiAgICA8c3R5bGU+aHRtbCwgYm9keSB7d2lkdGg6IDEwMCU7aGVpZ2h0OiAxMDAlO21hcmdpbjogMDtwYWRkaW5nOiAwO308L3N0eWxlPgogICAgPHN0eWxlPiNtYXAge3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2JvdHRvbTowO3JpZ2h0OjA7bGVmdDowO308L3N0eWxlPgogICAgCiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLAogICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgIDxzdHlsZT4jbWFwX2M2MmYxNGJhOTk3YzQwZmRiNjE3MzZiY2IwMjg0M2NlIHsKICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgd2lkdGg6IDc1LjAlOwogICAgICAgIGhlaWdodDogNzUuMCU7CiAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgfQogICAgPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4gICAgCiAgICAKICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfYzYyZjE0YmE5OTdjNDBmZGI2MTczNmJjYjAyODQzY2UiID48L2Rpdj4KPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgCiAgICAgICAgdmFyIGJvdW5kcyA9IG51bGw7CiAgICAKCiAgICB2YXIgbWFwX2M2MmYxNGJhOTk3YzQwZmRiNjE3MzZiY2IwMjg0M2NlID0gTC5tYXAoCiAgICAgICAgJ21hcF9jNjJmMTRiYTk5N2M0MGZkYjYxNzM2YmNiMDI4NDNjZScsIHsKICAgICAgICBjZW50ZXI6IFszNiwgMTI4XSwKICAgICAgICB6b29tOiA4LAogICAgICAgIG1heEJvdW5kczogYm91bmRzLAogICAgICAgIGxheWVyczogW10sCiAgICAgICAgd29ybGRDb3B5SnVtcDogZmFsc2UsCiAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICB6b29tQ29udHJvbDogdHJ1ZSwKICAgICAgICB9KTsKCgogICAgCiAgICB2YXIgdGlsZV9sYXllcl8yMTlmZDAwZGQ5N2I0Mzk1OWQ2Y2E0ZWU0MDc3YmY1YSA9IEwudGlsZUxheWVyKAogICAgICAgICdodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgewogICAgICAgICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgICAgICAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICAgICAgICJtYXhOYXRpdmVab29tIjogMTgsCiAgICAgICAgIm1heFpvb20iOiAxOCwKICAgICAgICAibWluWm9vbSI6IDAsCiAgICAgICAgIm5vV3JhcCI6IGZhbHNlLAogICAgICAgICJvcGFjaXR5IjogMSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiLAogICAgICAgICJ0bXMiOiBmYWxzZQp9KS5hZGRUbyhtYXBfYzYyZjE0YmE5OTdjNDBmZGI2MTczNmJjYjAyODQzY2UpOwo8L3NjcmlwdD4= onload=\"this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();\" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>"
+            ],
+            "text/plain": [
+              "<folium.folium.Map at 0x7fcf23467e10>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 2
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "4-hzMMZIs4qX",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "m.save('folium_test.html')                      # to save the map in a file"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "T4yT5AS_vrog",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 808
+        },
+        "outputId": "f03e0452-fa6d-4b76-ea17-4c72f872a898"
+      },
+      "source": [
+        "# You can set tile in map\n",
+        "\n",
+        "# The default tiles are set to OpenStreetMap,\n",
+        "# but Stamen Terrain, Stamen Toner, Mapbox Bright, and Mapbox Control Room,\n",
+        "# and many others tiles are built in.\n",
+        "\n",
+        "m = folium.Map(location=[36,128],\n",
+        "               width='75%', height='75%',\n",
+        "               control_scale=True, zoom_start=8)\n",
+        "folium.TileLayer('openstreetmap').add_to(m)\n",
+        "folium.TileLayer('Stamen Terrain',name='Terrain').add_to(m)\n",
+        "folium.TileLayer('Stamen Toner',name='Toner').add_to(m)\n",
+        "folium.TileLayer('Mapbox Bright',name='Mapbox Bright').add_to(m)\n",
+        "folium.TileLayer('Mapbox Control Room',name='Mapbox Room').add_to(m)\n",
+        "\n",
+        "# Enable the layer control \n",
+        "folium.LayerControl().add_to(m)\n",
+        "\n",
+        "m"
+      ],
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div style=\"width:100%;\"><div style=\"position:relative;width:100%;height:0;padding-bottom:60%;\"><iframe src=\"about:blank\" style=\"position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;\" data-html=PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVM9ZmFsc2U7IExfTk9fVE9VQ0g9ZmFsc2U7IExfRElTQUJMRV8zRD1mYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS40LjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NvZGUuanF1ZXJ5LmNvbS9qcXVlcnktMS4xMi40Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS40LjAvZGlzdC9sZWFmbGV0LmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC10aGVtZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9yYXdjZG4uZ2l0aGFjay5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIi8+CiAgICA8c3R5bGU+aHRtbCwgYm9keSB7d2lkdGg6IDEwMCU7aGVpZ2h0OiAxMDAlO21hcmdpbjogMDtwYWRkaW5nOiAwO308L3N0eWxlPgogICAgPHN0eWxlPiNtYXAge3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2JvdHRvbTowO3JpZ2h0OjA7bGVmdDowO308L3N0eWxlPgogICAgCiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLAogICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgIDxzdHlsZT4jbWFwX2FkNzFkYTVlNzIyYjQ5Mzg5OTY5ZmM1ZGZiOTJkYmEyIHsKICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgd2lkdGg6IDc1LjAlOwogICAgICAgIGhlaWdodDogNzUuMCU7CiAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgfQogICAgPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4gICAgCiAgICAKICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfYWQ3MWRhNWU3MjJiNDkzODk5NjlmYzVkZmI5MmRiYTIiID48L2Rpdj4KPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgCiAgICAgICAgdmFyIGJvdW5kcyA9IG51bGw7CiAgICAKCiAgICB2YXIgbWFwX2FkNzFkYTVlNzIyYjQ5Mzg5OTY5ZmM1ZGZiOTJkYmEyID0gTC5tYXAoCiAgICAgICAgJ21hcF9hZDcxZGE1ZTcyMmI0OTM4OTk2OWZjNWRmYjkyZGJhMicsIHsKICAgICAgICBjZW50ZXI6IFszNiwgMTI4XSwKICAgICAgICB6b29tOiA4LAogICAgICAgIG1heEJvdW5kczogYm91bmRzLAogICAgICAgIGxheWVyczogW10sCiAgICAgICAgd29ybGRDb3B5SnVtcDogZmFsc2UsCiAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NywKICAgICAgICB6b29tQ29udHJvbDogdHJ1ZSwKICAgICAgICB9KTsKTC5jb250cm9sLnNjYWxlKCkuYWRkVG8obWFwX2FkNzFkYTVlNzIyYjQ5Mzg5OTY5ZmM1ZGZiOTJkYmEyKTsKCiAgICAKICAgIHZhciB0aWxlX2xheWVyX2QwMzJlNWUyMTcwZjRlMDU4YmQ4YWE1YmU2MWUzMTdkID0gTC50aWxlTGF5ZXIoCiAgICAgICAgJ2h0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nJywKICAgICAgICB7CiAgICAgICAgImF0dHJpYnV0aW9uIjogbnVsbCwKICAgICAgICAiZGV0ZWN0UmV0aW5hIjogZmFsc2UsCiAgICAgICAgIm1heE5hdGl2ZVpvb20iOiAxOCwKICAgICAgICAibWF4Wm9vbSI6IDE4LAogICAgICAgICJtaW5ab29tIjogMCwKICAgICAgICAibm9XcmFwIjogZmFsc2UsCiAgICAgICAgIm9wYWNpdHkiOiAxLAogICAgICAgICJzdWJkb21haW5zIjogImFiYyIsCiAgICAgICAgInRtcyI6IGZhbHNlCn0pLmFkZFRvKG1hcF9hZDcxZGE1ZTcyMmI0OTM4OTk2OWZjNWRmYjkyZGJhMik7CiAgICB2YXIgdGlsZV9sYXllcl81ZTQ1NzhkMzc5MGM0MmY0YTA3YWUyNDMxMzA5NjQ4MyA9IEwudGlsZUxheWVyKAogICAgICAgICdodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgewogICAgICAgICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgICAgICAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICAgICAgICJtYXhOYXRpdmVab29tIjogMTgsCiAgICAgICAgIm1heFpvb20iOiAxOCwKICAgICAgICAibWluWm9vbSI6IDAsCiAgICAgICAgIm5vV3JhcCI6IGZhbHNlLAogICAgICAgICJvcGFjaXR5IjogMSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiLAogICAgICAgICJ0bXMiOiBmYWxzZQp9KS5hZGRUbyhtYXBfYWQ3MWRhNWU3MjJiNDkzODk5NjlmYzVkZmI5MmRiYTIpOwogICAgdmFyIHRpbGVfbGF5ZXJfODQ5MGY5NWE2MDE1NGRhNDk2MzEyNGFlYjdlZGFlMTAgPSBMLnRpbGVMYXllcigKICAgICAgICAnaHR0cHM6Ly9zdGFtZW4tdGlsZXMte3N9LmEuc3NsLmZhc3RseS5uZXQvdGVycmFpbi97en0ve3h9L3t5fS5qcGcnLAogICAgICAgIHsKICAgICAgICAiYXR0cmlidXRpb24iOiBudWxsLAogICAgICAgICJkZXRlY3RSZXRpbmEiOiBmYWxzZSwKICAgICAgICAibWF4TmF0aXZlWm9vbSI6IDE4LAogICAgICAgICJtYXhab29tIjogMTgsCiAgICAgICAgIm1pblpvb20iOiAwLAogICAgICAgICJub1dyYXAiOiBmYWxzZSwKICAgICAgICAib3BhY2l0eSI6IDEsCiAgICAgICAgInN1YmRvbWFpbnMiOiAiYWJjIiwKICAgICAgICAidG1zIjogZmFsc2UKfSkuYWRkVG8obWFwX2FkNzFkYTVlNzIyYjQ5Mzg5OTY5ZmM1ZGZiOTJkYmEyKTsKICAgIHZhciB0aWxlX2xheWVyX2UyYzQ1OGZhY2MzYTRmYjc5ZTNkZmMzNDhkMTI0NDFhID0gTC50aWxlTGF5ZXIoCiAgICAgICAgJ2h0dHBzOi8vc3RhbWVuLXRpbGVzLXtzfS5hLnNzbC5mYXN0bHkubmV0L3RvbmVyL3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgewogICAgICAgICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgICAgICAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICAgICAgICJtYXhOYXRpdmVab29tIjogMTgsCiAgICAgICAgIm1heFpvb20iOiAxOCwKICAgICAgICAibWluWm9vbSI6IDAsCiAgICAgICAgIm5vV3JhcCI6IGZhbHNlLAogICAgICAgICJvcGFjaXR5IjogMSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiLAogICAgICAgICJ0bXMiOiBmYWxzZQp9KS5hZGRUbyhtYXBfYWQ3MWRhNWU3MjJiNDkzODk5NjlmYzVkZmI5MmRiYTIpOwogICAgdmFyIHRpbGVfbGF5ZXJfYjdkNTcxZDljNDUzNDg1OWJhZGEyMmE3YWQ1NjM1YzUgPSBMLnRpbGVMYXllcigKICAgICAgICAnaHR0cHM6Ly97c30udGlsZXMubWFwYm94LmNvbS92My9tYXBib3gud29ybGQtYnJpZ2h0L3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgewogICAgICAgICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgICAgICAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICAgICAgICJtYXhOYXRpdmVab29tIjogMTgsCiAgICAgICAgIm1heFpvb20iOiAxOCwKICAgICAgICAibWluWm9vbSI6IDAsCiAgICAgICAgIm5vV3JhcCI6IGZhbHNlLAogICAgICAgICJvcGFjaXR5IjogMSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiLAogICAgICAgICJ0bXMiOiBmYWxzZQp9KS5hZGRUbyhtYXBfYWQ3MWRhNWU3MjJiNDkzODk5NjlmYzVkZmI5MmRiYTIpOwogICAgdmFyIHRpbGVfbGF5ZXJfNGYyMDFkZGU2N2QzNGM0YzhlMWRiYTZkOTU2YWMwYWIgPSBMLnRpbGVMYXllcigKICAgICAgICAnaHR0cHM6Ly97c30udGlsZXMubWFwYm94LmNvbS92My9tYXBib3guY29udHJvbC1yb29tL3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgewogICAgICAgICJhdHRyaWJ1dGlvbiI6IG51bGwsCiAgICAgICAgImRldGVjdFJldGluYSI6IGZhbHNlLAogICAgICAgICJtYXhOYXRpdmVab29tIjogMTgsCiAgICAgICAgIm1heFpvb20iOiAxOCwKICAgICAgICAibWluWm9vbSI6IDAsCiAgICAgICAgIm5vV3JhcCI6IGZhbHNlLAogICAgICAgICJvcGFjaXR5IjogMSwKICAgICAgICAic3ViZG9tYWlucyI6ICJhYmMiLAogICAgICAgICJ0bXMiOiBmYWxzZQp9KS5hZGRUbyhtYXBfYWQ3MWRhNWU3MjJiNDkzODk5NjlmYzVkZmI5MmRiYTIpOwogICAgCiAgICAgICAgICAgIHZhciBsYXllcl9jb250cm9sXzQ3ZDljM2MzMmJkZjQ4MGQ4ZWJlZTU1MTMwZjVmM2JiID0gewogICAgICAgICAgICAgICAgYmFzZV9sYXllcnMgOiB7ICJvcGVuc3RyZWV0bWFwIiA6IHRpbGVfbGF5ZXJfNWU0NTc4ZDM3OTBjNDJmNGEwN2FlMjQzMTMwOTY0ODMsIlRlcnJhaW4iIDogdGlsZV9sYXllcl84NDkwZjk1YTYwMTU0ZGE0OTYzMTI0YWViN2VkYWUxMCwiVG9uZXIiIDogdGlsZV9sYXllcl9lMmM0NThmYWNjM2E0ZmI3OWUzZGZjMzQ4ZDEyNDQxYSwiTWFwYm94IEJyaWdodCIgOiB0aWxlX2xheWVyX2I3ZDU3MWQ5YzQ1MzQ4NTliYWRhMjJhN2FkNTYzNWM1LCJNYXBib3ggUm9vbSIgOiB0aWxlX2xheWVyXzRmMjAxZGRlNjdkMzRjNGM4ZTFkYmE2ZDk1NmFjMGFiLCB9LAogICAgICAgICAgICAgICAgb3ZlcmxheXMgOiB7ICB9CiAgICAgICAgICAgICAgICB9OwogICAgICAgICAgICBMLmNvbnRyb2wubGF5ZXJzKAogICAgICAgICAgICAgICAgbGF5ZXJfY29udHJvbF80N2Q5YzNjMzJiZGY0ODBkOGViZWU1NTEzMGY1ZjNiYi5iYXNlX2xheWVycywKICAgICAgICAgICAgICAgIGxheWVyX2NvbnRyb2xfNDdkOWMzYzMyYmRmNDgwZDhlYmVlNTUxMzBmNWYzYmIub3ZlcmxheXMsCiAgICAgICAgICAgICAgICB7cG9zaXRpb246ICd0b3ByaWdodCcsCiAgICAgICAgICAgICAgICAgY29sbGFwc2VkOiB0cnVlLAogICAgICAgICAgICAgICAgIGF1dG9aSW5kZXg6IHRydWUKICAgICAgICAgICAgICAgIH0pLmFkZFRvKG1hcF9hZDcxZGE1ZTcyMmI0OTM4OTk2OWZjNWRmYjkyZGJhMik7CiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdGlsZV9sYXllcl84NDkwZjk1YTYwMTU0ZGE0OTYzMTI0YWViN2VkYWUxMC5yZW1vdmUoKTsKICAgICAgICAgICAgICAgIHRpbGVfbGF5ZXJfZTJjNDU4ZmFjYzNhNGZiNzllM2RmYzM0OGQxMjQ0MWEucmVtb3ZlKCk7CiAgICAgICAgICAgICAgICB0aWxlX2xheWVyX2I3ZDU3MWQ5YzQ1MzQ4NTliYWRhMjJhN2FkNTYzNWM1LnJlbW92ZSgpOwogICAgICAgICAgICAgICAgdGlsZV9sYXllcl80ZjIwMWRkZTY3ZDM0YzRjOGUxZGJhNmQ5NTZhYzBhYi5yZW1vdmUoKTsKICAgICAgICAKPC9zY3JpcHQ+ onload=\"this.contentDocument.open();this.contentDocument.write(atob(this.getAttribute('data-html')));this.contentDocument.close();\" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>"
+            ],
+            "text/plain": [
+              "<folium.folium.Map at 0x7fcf234866a0>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "swlvpHqFyNOa",
+        "colab_type": "text"
+      },
+      "source": [
+        "One can use Cloudmade or Mapbox custom tilesets–simply pass your key to the API_key keyword:\n",
+        "```\n",
+        "folium.Map(location=[45.5236, -122.6750],\n",
+        "           tiles='Mapbox',\n",
+        "           API_key='your.API.key')\n",
+        "```\n",
+        "Lastly, Folium supports passing any leaflet.js compatible custom tileset:\n",
+        "```\n",
+        "folium.Map(location=[45.372, -121.6972],\n",
+        "           zoom_start=12,\n",
+        "           tiles='http://{s}.tiles.yourtiles.com/{z}/{x}/{y}.png',\n",
+        "           attr='My Data Attribution')\n",
+        "```"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dg4OWBHZxrBX",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
